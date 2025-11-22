@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Image Resize</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background">
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+  </div>
+
+  <div class="container">
+    <h1>Pro Image Resizer - Fotoğraf Düzenleyici</h1>
+    <div id="dropzone">Sürükleyin veya <button id="pickFiles">Dosya Seç</button></div>
+    <input type="file" id="fileInput" multiple hidden>
+    
+    <div class="controls">
+      <label>Genişlik: <input type="number" id="widthInput"></label>
+      <label>Yükseklik: <input type="number" id="heightInput"></label>
+      <label><input type="checkbox" id="keepRatio" checked> Oran Koru</label>
+      <label>Format:
+        <select id="format">
+          <option value="original">Orijinal</option>
+          <option value="png">PNG</option>
+          <option value="jpeg">JPEG</option>
+          <option value="webp">WEBP</option>
+        </select>
+      </label>
+      <label>Kalite: <span id="qualText">80</span>
+        <input type="range" id="quality" min="1" max="100" value="80">
+      </label>
+    </div>
+
+    <div id="previewGrid"></div>
+    <button id="processBtn">Tümünü ZIP olarak indir</button>
+  </div>
+
+  <div id="toastRoot"></div>
+  <script src="script.js"></script>
+</body>
+</html>
