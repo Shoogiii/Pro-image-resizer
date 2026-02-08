@@ -1,6 +1,8 @@
 📸 Image-Resizer
 🇬🇧 English
 
+🌍 **Live Demo:** https://shoogiii.github.io/Pro-image-resizer/
+
 Image-Resizer is a fast, lightweight, and privacy-friendly image optimization tool that works entirely in your browser.
 No uploads, no tracking, no internet — your images never leave your device 🔒
 
@@ -149,3 +151,4 @@ Kurulum ve internet gerekmez
 
 Developed by Shoogiii / Berat
 Made with ❤️ and JavaScript
+
