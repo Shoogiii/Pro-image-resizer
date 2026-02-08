@@ -1,62 +1,151 @@
-# 📸 Image-Resizer
+📸 Image-Resizer
+🇬🇧 English
 
-**English:** Instantly resize and optimize your images — directly in your browser.  
-**Türkçe:** Fotoğraflarınızı anında yeniden boyutlandırın ve optimize edin — tamamen tarayıcınızda!
+Image-Resizer is a fast, lightweight, and privacy-friendly image optimization tool that works entirely in your browser.
+No uploads, no tracking, no internet — your images never leave your device 🔒
 
----
+⭐ Features
 
-## ⭐ Features / Özellikler
+🖼 Image Upload
 
-**🖼 Upload PNG or JPG images**  
-PNG or JPG files? No problem — just drag & drop!  
-**PNG veya JPG fotoğrafları kolayca yükleyin — sürükle bırak yeterli!**
+Supports PNG, JPG, WEBP
 
-**📏 Custom size resize**  
-Resize your images to any width & height you need.  
-**Fotoğrafı istediğiniz genişlik ve yükseklikte yeniden boyutlandırın.**
+Drag & drop or select multiple files
 
-**🎚 Quality control (1–100)**  
-Adjust image quality from 1 to 100 to balance size & clarity.  
-**Kaliteyi 1–100 arasında ayarlayarak boyut ve netlik arasında denge kurun.**
+📏 Resize & Transform
 
-**🔍 Real-time preview**  
-See your edits instantly before downloading.  
-**İndirmeden önce değişiklikleri anlık olarak önizleyin.**
+Custom width & height
 
-**⬇️ One-click optimized download**  
-Download your optimized image in just one click.  
-**Tek tıkla optimize edilmiş görseli indirin.**
+Keep aspect ratio
 
-**🔒 Offline & privacy-friendly**  
-All processing happens locally — your images never leave your device.  
-**Tüm işlemler cihazınızda gerçekleşir — verileriniz güvende!**
+Rotate & flip images
 
----
+🎚 Quality & Format Control
 
-## 🚀 Usage / Kullanım
+Quality control (1–100)
 
-1. Open **index.html** in your browser.  
-2. Select the image you want to resize.  
-3. Set desired width, height, and quality.  
-4. Click **“Optimize & Download”** to save your image.
+Export as PNG, JPEG, WEBP, or original format
 
-**1. Tarayıcınızda `index.html` dosyasını açın.**  
-**2. Yeniden boyutlandırmak istediğiniz fotoğrafı seçin.**  
-**3. Genişlik, yükseklik ve kalite ayarlarını belirleyin.**  
-**4. “Optimize & Download” butonuna tıklayın ve görseli kaydedin.**
+Custom filename pattern
 
----
+🎨 Filters & Enhancements
 
-## 💻 Requirements / Gereksinimler
+Brightness, contrast, saturation
 
-- Modern web browser (Chrome, Firefox, Edge, Safari, vb.)  
-- Fully offline — no internet connection required  
-- **Modern tarayıcı ve internet gerektirmez, tamamen offline çalışır.**
+Sepia, grayscale, blur
 
----
+Extra sharpen option
 
-## 👨‍💻 About / Hakkında
+©️ Watermark Support
 
-**Image-Resizer** is a fast, lightweight, and privacy-friendly image optimization tool developed by **Shoogiii / Berat**.  
-**Image-Resizer**, hızlı, hafif ve gizlilik dostu bir görsel optimizasyon aracıdır.  
-Tüm işlemler cihazınızda gerçekleşir ve internet bağlantısı gerekmez.
+Custom text watermark
+
+Color, opacity & position control
+
+🔍 Real-time Preview
+
+See changes instantly before downloading
+
+⬇️ One-click Download
+
+Optimized output with a single click
+
+🔒 Offline & Privacy-friendly
+
+100% client-side processing
+
+Works fully offline
+
+🚀 Usage
+
+Open index.html in your browser
+
+Upload or drag & drop images
+
+Adjust size, quality, format, and effects
+
+Click Process & Download
+
+💻 Requirements
+
+Modern web browser (Chrome, Firefox, Edge, Safari)
+
+No installation or internet required
+
+🇹🇷 Türkçe
+
+Image-Resizer, görsellerinizi tamamen tarayıcınızda hızlı, güvenli ve pratik şekilde yeniden boyutlandırmanızı ve optimize etmenizi sağlayan bir araçtır.
+Dosyalarınız cihazınızdan çıkmaz, internet gerekmez 🔐
+
+⭐ Özellikler
+
+🖼 Görsel Yükleme
+
+PNG, JPG, WEBP desteği
+
+Sürükle & bırak veya çoklu dosya seçimi
+
+📏 Boyutlandırma & Dönüştürme
+
+Özel genişlik & yükseklik
+
+En-boy oranını koruma
+
+Döndürme ve çevirme
+
+🎚 Kalite & Format Kontrolü
+
+1–100 arası kalite ayarı
+
+PNG, JPEG, WEBP veya orijinal format
+
+Özel dosya adı deseni
+
+🎨 Filtreler & Geliştirmeler
+
+Parlaklık, kontrast, doygunluk
+
+Sepya, siyah-beyaz, bulanıklık
+
+Ekstra keskinlik
+
+©️ Filigran Desteği
+
+Metin filigranı ekleme
+
+Renk, opaklık ve konum ayarı
+
+🔍 Anlık Önizleme
+
+İndirmeden önce sonucu görün
+
+⬇️ Tek Tıkla İndirme
+
+Optimize edilmiş çıktı
+
+🔒 Offline & Gizlilik Dostu
+
+%100 tarayıcı taraflı işlem
+
+İnternet gerekmez
+
+🚀 Kullanım
+
+index.html dosyasını tarayıcıda açın
+
+Görselleri yükleyin veya sürükleyin
+
+Boyut, kalite ve efektleri ayarlayın
+
+İşle ve İndir butonuna tıklayın
+
+💻 Gereksinimler
+
+Modern bir tarayıcı (Chrome, Firefox, Edge, Safari)
+
+Kurulum ve internet gerekmez
+
+👨‍💻 Developer
+
+Developed by Shoogiii / Berat
+Made with ❤️ and JavaScript
