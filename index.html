@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pro Fotoğraf Düzenleyici</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <div class="background-globale">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <canvas id="particleCanvas"></canvas>
+  </div>
+
+  <div class="glass-container">
+    <header class="app-header">
+      <div class="lang-switch">
+        <div class="theme-switch-container">
+          <button class="theme-btn" data-color="purple" style="background:#6366f1"></button>
+          <button class="theme-btn" data-color="blue" style="background:#3b82f6"></button>
+          <button class="theme-btn" data-color="orange" style="background:#f97316"></button>
+          <button class="theme-btn" data-color="green" style="background:#10b981"></button>
+        </div>
+        <button id="langBtn" class="lang-btn" title="Switch Language">
+          <i class="fa-solid fa-globe"></i> <span id="langText">EN</span>
+        </button>
+      </div>
+      <div class="logo">
+        <img src="logo.png" alt="Pro Resizer Logo" class="app-logo">
+        <h1>Pro Resizer</h1>
+      </div>
+      <p class="app-description" data-i18n="appDesc">Görsellerinizi saniyeler içinde mükemmelleştirin.</p>
+    </header>
+
+    <main>
+      <div id="dropzone" class="upload-area">
+        <div class="upload-content">
+          <div class="icon-box">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+          </div>
+          <h3 data-i18n="dropText">Dosyaları Buraya Sürükleyin</h3>
+          <p data-i18n="or">veya</p>
+          <button id="pickFiles" class="btn-primary">
+            <i class="fa-solid fa-folder-open"></i> <span data-i18n="pickFiles">Dosya Seç</span>
+          </button>
+          <span class="support-text" data-i18n="supportText">PNG, JPG, WEBP desteklenir</span>
+        </div>
+        <input type="file" id="fileInput" multiple hidden>
+      </div>
+
+      <div class="editor-container">
+        <div class="controls-panel">
+          <!-- Sol Panel: Boyut & Döndürme -->
+          <div class="panel-column">
+            <div class="panel-section dimensions">
+              <div class="section-header">
+                <div class="section-badge"><i class="fa-solid fa-ruler-combined"></i> <span data-i18n="sizeHeader">Boyut
+                    &
+                    Yön</span></div>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+              </div>
+
+              <div class="panel-content">
+                <div class="template-section">
+                  <label class="input-label"><i class="fa-solid fa-shapes"></i> <span data-i18n="templatesLabel">Hazır
+                      Şablonlar</span></label>
+                  <div class="templates-grid">
+                    <button class="template-btn" data-w="1080" data-h="1080" title="Instagram Post">
+                      <i class="fa-brands fa-instagram"></i> <span>Post</span>
+                    </button>
+                    <button class="template-btn" data-w="1080" data-h="1920" title="Instagram Story">
+                      <i class="fa-brands fa-instagram"></i> <span>Story</span>
+                    </button>
+                    <button class="template-btn" data-w="1280" data-h="720" title="YouTube Thumbnail">
+                      <i class="fa-brands fa-youtube"></i> <span>Thumb</span>
+                    </button>
+                    <button class="template-btn" data-w="1500" data-h="500" title="Twitter Header">
+                      <i class="fa-brands fa-twitter"></i> <span>Header</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="dimension-inputs">
+                  <div class="input-group">
+                    <label data-i18n="widthLabel">Genişlik</label>
+                    <div class="input-wrapper">
+                      <input type="number" id="widthInput" placeholder="Auto">
+                      <span class="unit">px</span>
+                    </div>
+                  </div>
+
+                  <div class="link-wrapper">
+                    <i class="fa-solid fa-link"></i>
+                  </div>
+
+                  <div class="input-group">
+                    <label data-i18n="heightLabel">Yükseklik</label>
+                    <div class="input-wrapper">
+                      <input type="number" id="heightInput" placeholder="Auto">
+                      <span class="unit">px</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="checkbox-container">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="keepRatio" checked>
+                    <span class="checkmark"></span>
+                    <span class="label-text" data-i18n="keepRatio">Oranı Koru</span>
+                  </label>
+                </div>
+
+                <!-- Rotation Tools -->
+                <div class="transform-tools">
+                  <button id="rotateLeftBtn" class="tool-btn" title="Sola Döndür"><i
+                      class="fa-solid fa-rotate-left"></i></button>
+                  <button id="rotateRightBtn" class="tool-btn" title="Sağa Döndür"><i
+                      class="fa-solid fa-rotate-right"></i></button>
+                  <button id="flipHBtn" class="tool-btn" title="Yatay Çevir"><i
+                      class="fa-solid fa-arrows-left-right"></i></button>
+                  <button id="flipVBtn" class="tool-btn" title="Dikey Çevir"><i
+                      class="fa-solid fa-arrows-up-down"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ Panel: Efektler & Çıktı -->
+          <div class="panel-column">
+            <div class="panel-section watermark-panel" style="margin-bottom: 20px;">
+              <div class="section-header">
+                <div class="section-badge"><i class="fa-solid fa-copyright"></i> <span
+                    data-i18n="watermarkHeader">Filigran</span></div>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+              </div>
+
+              <div class="panel-content">
+                <div class="checkbox-container">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="enableWatermark">
+                    <span class="checkmark"></span>
+                    <span class="label-text" data-i18n="enableWatermark">Filigran Ekle</span>
+                  </label>
+                </div>
+
+                <div id="watermarkControls" style="display:none; margin-top:15px;">
+                  <div class="input-group" style="margin-bottom:12px;">
+                    <label data-i18n="watermarkText">Metin</label>
+                    <div class="input-wrapper">
+                      <input type="text" id="wmText" placeholder="© 2024">
+                    </div>
+                  </div>
+
+                  <div class="setting-row" style="display:flex; gap:10px;">
+                    <div style="flex:1;">
+                      <label data-i18n="wmColor">Renk</label>
+                      <input type="color" id="wmColor" value="#ffffff"
+                        style="width:100%; height:30px; border:none; border-radius:4px; cursor:pointer;">
+                    </div>
+                    <div style="flex:1;">
+                      <label data-i18n="wmOpacity">Opaklık</label>
+                      <input type="range" id="wmOpacity" min="0" max="1" step="0.1" value="0.7"
+                        style="width:100%; margin-top:8px;">
+                    </div>
+                  </div>
+
+                  <div class="setting-row">
+                    <label data-i18n="wmPosition">Konum</label>
+                    <select id="wmPosition" style="width:100%; padding:8px; border-radius:6px;">
+                      <option value="bottom-right">Sağ Alt</option>
+                      <option value="bottom-left">Sol Alt</option>
+                      <option value="top-right">Sağ Üst</option>
+                      <option value="top-left">Sol Üst</option>
+                      <option value="center">Orta</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel-section output">
+              <div class="section-header">
+                <div class="section-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> <span
+                    data-i18n="effectsHeader">Efektler & Çıktı</span></div>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+              </div>
+
+              <div class="panel-content">
+                <!-- Filters -->
+                <div class="filter-group">
+                  <label><i class="fa-solid fa-sun"></i> <span data-i18n="brightness">Parlaklık</span>: <span
+                      id="brightVal">100%</span></label>
+                  <div class="range-wrapper small">
+                    <input type="range" id="brightness" min="0" max="200" value="100">
+                  </div>
+                </div>
+
+                <div class="filter-group">
+                  <label><i class="fa-solid fa-circle-half-stroke"></i> <span data-i18n="contrast">Kontrast</span>:
+                    <span id="contrastVal">100%</span></label>
+                  <div class="range-wrapper small">
+                    <input type="range" id="contrast" min="0" max="200" value="100">
+                  </div>
+                </div>
+
+                <div class="filter-group">
+                  <label><i class="fa-solid fa-droplet"></i> <span data-i18n="saturation">Doygunluk</span>: <span
+                      id="satVal">100%</span></label>
+                  <div class="range-wrapper small">
+                    <input type="range" id="saturation" min="0" max="200" value="100">
+                  </div>
+                </div>
+
+                <div class="filter-group">
+                  <label><i class="fa-solid fa-wand-magic"></i> <span data-i18n="sepia">Sepya</span>: <span
+                      id="sepiaVal">0%</span></label>
+                  <div class="range-wrapper small">
+                    <input type="range" id="sepia" min="0" max="100" value="0">
+                  </div>
+                </div>
+
+                <div class="filter-group">
+                  <label><i class="fa-solid fa-palette"></i> <span data-i18n="grayscale">Siyah-Beyaz</span>: <span
+                      id="grayVal">0%</span></label>
+                  <div class="range-wrapper small">
+                    <input type="range" id="grayscale" min="0" max="100" value="0">
+                  </div>
+                </div>
+
+                <div class="filter-group">
+                  <label><i class="fa-solid fa-eye-slash"></i> <span data-i18n="blur">Bulanıklık</span>: <span
+                      id="blurVal">0px</span></label>
+                  <div class="range-wrapper small">
+                    <input type="range" id="blur" min="0" max="10" step="0.5" value="0">
+                  </div>
+                </div>
+
+                <div style="text-align:right; margin-bottom:15px;">
+                  <button id="resetFiltersBtn"
+                    style="background:transparent; border:1px solid var(--glass-border); color:var(--text-muted); padding:4px 10px; border-radius:12px; font-size:11px; cursor:pointer;">
+                    <i class="fa-solid fa-rotate-left"></i> <span data-i18n="resetFilters">Ayarları Sıfırla</span>
+                  </button>
+                </div>
+
+                <div class="checkbox-container">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="sharpen">
+                    <span class="checkmark"></span>
+                    <span class="label-text" data-i18n="sharpenLabel">Ekstra Keskinlik</span>
+                  </label>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="setting-row">
+                  <label data-i18n="filenameLabel">Dosya Adı Deseni</label>
+                  <div class="input-wrapper">
+                    <input type="text" id="filenamePattern" placeholder="örn: image_{n}">
+                  </div>
+                  <span class="support-text" style="font-size:10px; margin-top:4px; display:block; opacity:0.7">{n} = 1,
+                    2...</span>
+                </div>
+
+                <div class="setting-row">
+                  <label data-i18n="formatLabel">Format</label>
+                  <div class="select-wrapper">
+                    <select id="format">
+                      <option value="original" data-i18n="originalFormat">Orijinal Format</option>
+                      <option value="png">PNG</option>
+                      <option value="jpeg">JPEG</option>
+                      <option value="webp">WEBP</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down arrow"></i>
+                  </div>
+                </div>
+
+                <div class="setting-row quality-row">
+                  <div class="row-header">
+                    <label data-i18n="qualityLabel">Kalite</label>
+                    <span class="quality-value" id="qualText">80%</span>
+                  </div>
+                  <div class="range-wrapper">
+                    <input type="range" id="quality" min="1" max="100" value="80">
+                    <div class="range-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="previewGrid" class="preview-grid"></div>
+      </div>
+    </main>
+    <div class="action-footer">
+      <button id="processBtn" class="btn-action">
+        <span class="btn-content">
+          <i class="fa-solid fa-bolt"></i>
+          <span data-i18n="processBtn">İşle ve İndir</span>
+        </span>
+        <div class="btn-glow"></div>
+      </button>
+    </div>
+    </main>
+  </div>
+  <footer class="app-footer">Made By Shoogi/Berat</footer>
+
+  <div id="toastRoot"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>
